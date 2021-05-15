@@ -1,23 +1,23 @@
 // Add your functions here
 function map (array, func) {
-    let r = []
+    let r = [];
     for (let i = 0; i < array.length; i++ ) {
       r.push(func(array[i]));
     }
-    return r
+    return r;
 }
 
-function reduce (array, func, start = 0) {
-	let memo = start
+function reduce (array, func, startingPoint = 0) {
+	let newValue = startingPoint;
     for (let i = 0; i < array.length; i++ ) {
         if(array[i] === false){
-            memo = false
+            newValue = false;
             continue
         } else if (array[i] === true){
-            memo = true
+            newValue = true;
             continue
         }
-      memo = func(array[i],memo);
+      newValue = func(array[i],newValue);
     }
-    return memo
+    return newValue;
 } 
