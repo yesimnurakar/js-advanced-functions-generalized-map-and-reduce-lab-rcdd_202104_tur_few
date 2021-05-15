@@ -20,4 +20,4 @@ function reduce (array, func, startingPoint = 0) {
       newValue = func(array[i],newValue);
     }
     return newValue;
-} 
+}
