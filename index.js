@@ -15,7 +15,7 @@ function reduce (array, func, start = 0) {
             continue
         } else if (array[i] === true){
             memo = true
-            continue       
+            continue
         }
       memo = func(array[i],memo);
     }
