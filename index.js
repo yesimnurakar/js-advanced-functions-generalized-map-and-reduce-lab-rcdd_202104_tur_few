@@ -1,15 +1,23 @@
+// Add your functions here
+function map (array, func) {
+    let r = []
+    for (let i = 0; i < array.length; i++ ) {
+      r.push(func(array[i]));
+    }
+    return r
+}
 
-const map = (sourceArray, func) => {
-                let newArr = [];
-                sourceArray.map((arr) => {
-                                return newArr.push(func(arr));
-                });
-                return newArr;
-};
-
-const reduce = (sourceArray, func, startingValue) => {
-                let r = (startingValue) ? startingValue : sourceArray[0];                       // Basically if startingValue return r = startingValue, else return r = souceArray[0];
-                let i = (startingValue) ? 0 : 1;                                                // Basically if startingValue return i = 0, else return i = 1;
-                for (; i < sourceArray.length; i++) r = func(sourceArray[i], r);
-                return r;
-}; 
+function reduce (array, func, start = 0) {
+	let memo = start
+    for (let i = 0; i < array.length; i++ ) {
+        if(array[i] === false){
+            memo = false
+            continue
+        } else if (array[i] === true){
+            memo = true
+            continue       
+        }
+      memo = func(array[i],memo);
+    }
+    return memo
+} 
