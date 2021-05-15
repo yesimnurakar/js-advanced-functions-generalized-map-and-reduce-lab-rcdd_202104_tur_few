@@ -1,68 +1,15 @@
-const sourceArray= [1, 2, 3, -9];
-const array= [];
 
-function mapToNegativize(array) {
-    let result = array.map(function(number){
-        return -number ;
-})
-    return result;
+const map = (sourceArray, func) => {
+                let newArr = [];
+                sourceArray.map((arr) => {
+                                return newArr.push(func(arr));
+                });
+                return newArr;
 };
 
-function mapToDouble(array) {
-    let result = array.map(function(number){
-        return number * 2 ;
-})
-    return result;
-};
-
-function mapToSquare(array) {
-    let result = array.map(function(number){
-        return number * number;
-})
-    return result;
-};
-
-function mapToNoChange(array) {
-    let result = array.map(function(number){
-        return number;
-})
-    return result;
-};
-
-mapToNegativize(sourceArray);
-mapToDouble(sourceArray);
-mapToSquare(sourceArray);
-mapToNoChange(sourceArray);
-
-
-function reduceToTotal(array, startingPoint = 0){
-    let result = array.reduce(function(accumulator, number) {
-        return accumulator + number;
-      },startingPoint)
-      return result;
-}
-
-const reduceToAllTrue = (arr) => {
-    return arr.reduce(function(accumulator, currentValue) {
-     if(currentValue){
-       return true;
-     } else {
-       return false;
-     }
-  })
-  }
-
-  function reduceToAnyTrue(array) {
-    for (let i = 0; i < array.length; i++ ) {
-      if (array[i]){
-        return true;
-      }}
-    return false;
-};
-
-
-
-reduceToTotal(sourceArray);
-reduceToTotal(sourceArray, 10);
-reduceToAllTrue(sourceArray);
-reduceToAnyTrue(sourceArray);
+const reduce = (sourceArray, func, startingValue) => {
+                let r = (startingValue) ? startingValue : sourceArray[0];                       // Basically if startingValue return r = startingValue, else return r = souceArray[0];
+                let i = (startingValue) ? 0 : 1;                                                // Basically if startingValue return i = 0, else return i = 1;
+                for (; i < sourceArray.length; i++) r = func(sourceArray[i], r);
+                return r;
+}; 
